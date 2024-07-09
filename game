@@ -1,3 +1,5 @@
+// validates and returns user's input
+
 const getUserChoice = userInput => {
   userInput = userInput.toLowerCase();
   if (userInput === 'rock' ||
@@ -11,6 +13,7 @@ const getUserChoice = userInput => {
       }
 }
 
+// randomizes and returns computer's choice
 
 const getComputerChoice = () => {
   let number = Math.floor(Math.random() * 4);
@@ -32,7 +35,8 @@ const getComputerChoice = () => {
   return computerChoice;
 }
 
-//determines winner with a console.log
+//creates rules and determines winner
+
 const determineWinner = (userChoice, computerChoice) => {
   if (userChoice === computerChoice) {
     console.log(`This is a tie! You both chose ${userChoice}.`);
@@ -49,10 +53,14 @@ const determineWinner = (userChoice, computerChoice) => {
     }
 }
 
+// connects all functions together
+
 function playGame() {
     let userChoice = getUserChoice('paper');
     let computerChoice = getComputerChoice();
     determineWinner(userChoice, computerChoice);
 }
+
+// runs the game
 
 playGame();
