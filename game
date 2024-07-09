@@ -1,0 +1,58 @@
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if (userInput === 'rock' ||
+      userInput === 'paper' ||
+      userInput === 'bomb' ||
+      userInput === 'scissors') {
+    console.log(`The player chose: ${userInput}.`); // Prints out the player choice
+    return userInput;
+    } else {
+      console.log('Error. Insert valid input.');
+      }
+}
+
+
+const getComputerChoice = () => {
+  let number = Math.floor(Math.random() * 4);
+   switch (number) {
+    case 1:
+      computerChoice = 'rock';
+      break;
+    case 2:
+      computerChoice = 'paper';
+      break;
+    case 3:
+      computerChoice = 'bomb';
+      break;
+    default:
+      computerChoice = 'scissors';
+      break; 
+      }
+  console.log(`The computer\'s choice is: ${computerChoice} (${number}).`);
+  return computerChoice;
+}
+
+//determines winner with a console.log
+const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
+    console.log(`This is a tie! You both chose ${userChoice}.`);
+  } else if (userChoice === 'bomb') {
+    console.log(`You won! You chose: ${userChoice}, and the computer chose: ${computerChoice}.`);
+  } else if (
+    (userChoice === 'rock' && computerChoice === 'scissors') ||
+    (userChoice === 'paper' && computerChoice === 'rock') ||
+    (userChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+    console.log(`You won! You chose: ${userChoice}, and the computer chose: ${computerChoice}.`);
+    } else {
+      console.log(`You lost! You chose: ${userChoice}, and the computer chose: ${computerChoice}.`);
+    }
+}
+
+function playGame() {
+    let userChoice = getUserChoice('paper');
+    let computerChoice = getComputerChoice();
+    determineWinner(userChoice, computerChoice);
+}
+
+playGame();
